@@ -1,7 +1,7 @@
-def main():
-    numbers = []
+smallest = None
+largest = None
 
-    while True:
+while True:
         user_input = input("Enter a number (or press Enter to quit): ")
 
         if user_input == "":  # empty string to quit
@@ -9,15 +9,18 @@ def main():
 
         try:
             num = float(user_input)  # convert to number
-            numbers.append(num)
         except ValueError:
-            print("Invalid input. Please enter a valid number.")
+            print("Please enter a valid number.")
+            continue
 
-    if len(numbers) > 0:
-        print("Smallest number:", min(numbers))
-        print("Largest number:", max(numbers))
-    else:
-        print("No numbers were entered.")
+        if smallest is None or num < smallest:
+            smallest = num
+        if largest is None or num > largest:
+            largest = num
+        if smallest is None or largest is None:
+          print("No numbers were entered.")
 
-if __name__ == "__main__":
-    main()
+        else:
+                print("Smallest number:", smallest)
+                print("Largest number:", largest)
+
